@@ -142,99 +142,6 @@
       ]
     },
     {
-      "id": 46,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        258.04047272783316,
-        635.8721508520134
-      ],
-      "size": [
-        392.5887684067966,
-        104.00311227814268
-      ],
-      "flags": {},
-      "order": 12,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 127
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            135
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoraLoaderModelOnly"
-      },
-      "widgets_values": [
-        "Z-xhs888.safetensors",
-        0.5
-      ]
-    },
-    {
-      "id": 51,
-      "type": "MarkdownNote",
-      "pos": [
-        292.215131804842,
-        489.4639581914691
-      ],
-      "size": [
-        312.1860946194895,
-        88
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "title": "Notice",
-      "properties": {},
-      "widgets_values": [
-        "可挂载多个，这里我随便找了两个 Lora 为例"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 29,
-      "type": "VAELoader",
-      "pos": [
-        1170.4759728801014,
-        1119.9842359688403
-      ],
-      "size": [
-        270,
-        58
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": [
-            22
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "VAELoader"
-      },
-      "widgets_values": [
-        "ae.safetensors"
-      ]
-    },
-    {
       "id": 27,
       "type": "QwenImageDiffsynthControlnet",
       "pos": [
@@ -293,110 +200,6 @@
       ]
     },
     {
-      "id": 23,
-      "type": "DWPreprocessor",
-      "pos": [
-        1170.1489914447352,
-        802.9325752536338
-      ],
-      "size": [
-        299.591796875,
-        222
-      ],
-      "flags": {},
-      "order": 15,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 137
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            131,
-            132
-          ]
-        },
-        {
-          "name": "POSE_KEYPOINT",
-          "type": "POSE_KEYPOINT",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "DWPreprocessor"
-      },
-      "widgets_values": [
-        "enable",
-        "enable",
-        "enable",
-        512,
-        "yolox_l.onnx",
-        "dw-ll_ucoco_384_bs5.torchscript.pt",
-        "disable"
-      ]
-    },
-    {
-      "id": 26,
-      "type": "ModelPatchLoader",
-      "pos": [
-        1181.501700386932,
-        663.5357969944033
-      ],
-      "size": [
-        300.0042440156494,
-        66.57264114732834
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL_PATCH",
-          "type": "MODEL_PATCH",
-          "links": [
-            21
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "ModelPatchLoader"
-      },
-      "widgets_values": [
-        "Z-Image-Turbo-Fun-Controlnet-Union-2.1-lite-2602-8steps.safetensors"
-      ]
-    },
-    {
-      "id": 53,
-      "type": "MarkdownNote",
-      "pos": [
-        1184.7814386022314,
-        531.2059363200002
-      ],
-      "size": [
-        312.1860946194895,
-        88
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "title": "Notice",
-      "properties": {},
-      "widgets_values": [
-        "补丁下载地址：\nhttps://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1/tree/main"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
       "id": 54,
       "type": "MarkdownNote",
       "pos": [
@@ -408,7 +211,7 @@
         88
       ],
       "flags": {},
-      "order": 7,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -490,7 +293,7 @@
         106
       ],
       "flags": {},
-      "order": 8,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -523,7 +326,7 @@
         58
       ],
       "flags": {},
-      "order": 9,
+      "order": 5,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -610,44 +413,6 @@
       ]
     },
     {
-      "id": 52,
-      "type": "LoraLoaderModelOnly",
-      "pos": [
-        255.2467171521519,
-        825.8456588588487
-      ],
-      "size": [
-        392.5887684067966,
-        104.00311227814268
-      ],
-      "flags": {},
-      "order": 16,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 135
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            136
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoraLoaderModelOnly"
-      },
-      "widgets_values": [
-        "merged_zit_v5.safetensors",
-        0.5
-      ]
-    },
-    {
       "id": 25,
       "type": "PreviewImage",
       "pos": [
@@ -686,7 +451,7 @@
         534
       ],
       "flags": {},
-      "order": 10,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -803,7 +568,7 @@
         314.00000000000006
       ],
       "flags": {},
-      "order": 11,
+      "order": 7,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -827,6 +592,241 @@
         "ComfyUI_OpenPose_30.png",
         "image"
       ]
+    },
+    {
+      "id": 29,
+      "type": "VAELoader",
+      "pos": [
+        1168.9244141307804,
+        1161.602846018077
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ]
+    },
+    {
+      "id": 23,
+      "type": "DWPreprocessor",
+      "pos": [
+        1159.7792210985526,
+        872.4178501782687
+      ],
+      "size": [
+        299.591796875,
+        222
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 137
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            131,
+            132
+          ]
+        },
+        {
+          "name": "POSE_KEYPOINT",
+          "type": "POSE_KEYPOINT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DWPreprocessor"
+      },
+      "widgets_values": [
+        "enable",
+        "enable",
+        "enable",
+        512,
+        "yolox_l.onnx",
+        "dw-ll_ucoco_384_bs5.torchscript.pt",
+        "disable"
+      ]
+    },
+    {
+      "id": 26,
+      "type": "ModelPatchLoader",
+      "pos": [
+        1165.483809701494,
+        743.8875643108663
+      ],
+      "size": [
+        300.0042440156494,
+        66.57264114732834
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL_PATCH",
+          "type": "MODEL_PATCH",
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelPatchLoader"
+      },
+      "widgets_values": [
+        "Z-Image-Turbo-Fun-Controlnet-Union-2.1-lite-2602-8steps.safetensors"
+      ]
+    },
+    {
+      "id": 53,
+      "type": "MarkdownNote",
+      "pos": [
+        1161.602936854279,
+        499.0138828448763
+      ],
+      "size": [
+        328.84023601508056,
+        165.9574554335178
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Notice",
+      "properties": {},
+      "widgets_values": [
+        "### 补丁下载地址\nhttps://huggingface.co/alibaba-pai/Z-Image-Turbo-Fun-Controlnet-Union-2.1/tree/main\n\n### 存放路径\nComfyUI 目录下 `\\models\\model_patches` 中\n\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 52,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        296.1741235223826,
+        1067.5548240928954
+      ],
+      "size": [
+        392.5887684067966,
+        104.00311227814268
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 135
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            136
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "merged_zit_v5.safetensors",
+        0.5
+      ]
+    },
+    {
+      "id": 46,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        294.19706818423253,
+        891.3072323433947
+      ],
+      "size": [
+        392.5887684067966,
+        104.00311227814268
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 127
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            135
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "Z-xhs888.safetensors",
+        0.5
+      ]
+    },
+    {
+      "id": 51,
+      "type": "MarkdownNote",
+      "pos": [
+        278.38192594674575,
+        470.5237673371575
+      ],
+      "size": [
+        396.48711025729835,
+        278.33175174971075
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Notice",
+      "properties": {},
+      "widgets_values": [
+        "可挂载多个，这里我随便找了两个 Lora 为例。\n\n## LoRA 存放路径\nComfyUI 目录下 `\\models\\loras` 中\n\n## 演示的两个 LoRA 下载地址\n* 二次元的：https://civitai.com/models/2520711/lora-version-z-imageturbo-anime-v2-lora?modelVersionId=2833099\n* 小红书的：https://civitai.com/models/2175220/z-image-asian-girl-22?modelVersionId=2449544\n\n大家可以去搜索更多有意思的 LoRA"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
     }
   ],
   "links": [
@@ -1000,8 +1000,8 @@
       "bounding": [
         249.07089458155158,
         393.0536270072988,
-        407.6092811491021,
-        573.2126206762945
+        465.08789659670356,
+        838.0033553540203
       ],
       "color": "#3f789e",
       "font_size": 24,
@@ -1050,10 +1050,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6999009869752743,
+      "scale": 0.5461270205545619,
       "offset": [
-        193.2234394043539,
-        -204.18936573330828
+        1177.7930918068782,
+        10.74684319922255
       ]
     },
     "workflowRendererVersion": "LG",
