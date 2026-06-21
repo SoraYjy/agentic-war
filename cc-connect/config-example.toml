@@ -1,0 +1,59 @@
+# cc-connect 配置 —— Route A: 个人微信(ilink) + 本地 Claude Code
+# 二进制: ./cc-connect (v1.3.4 预编译, darwin-arm64)
+
+language = "zh"
+
+[log]
+level = "info"   # 调试时可改 "debug" 看长轮询细节
+
+# 显示设置：是否把模型的"思考过程"作为 💭 预览发到微信。
+# thinking_messages = true(默认) → 显示思考预览(能看到模型推理，但会多一条 💭 消息)
+# thinking_messages = false      → 只发正式答复，不发思考预览(想要干净回复就关掉)
+# 另可设 mode = "quiet" 同时静音思考 + 工具噪声。改完重启 cc-connect 生效。
+[display]
+thinking_messages = true   # 显式开启；不想要思考模式改成 false
+
+# -----------------------------------------------------------------------------
+# 项目：把一个代码目录绑定到一个 agent + 一组平台
+# -----------------------------------------------------------------------------
+
+[[projects]]
+name = "weixin-claude"
+
+# --- Agent: 用你本机的 claude CLI ---
+
+[projects.agent]
+type = "claudecode"
+
+[projects.agent.options]
+# claude 的工作目录：决定 claude 在哪个项目里读写代码、跑命令。
+# 改成你实际要让它操作的项目；聊天里也能用 /dir 临时切换。
+work_dir = "/Users/sora/WorkSpace/Agents/pa"
+# 权限模式(Q3)：= "auto" → claude 自动判断、基本不再弹权限确认，只靠 settings.json 中的 deny 黑名单拦最危险的。
+# 想更保守可改 "acceptEdits"(仅编辑自动通过) 或 "default"(每次都问)。
+mode = "auto"
+
+# ── 沙箱隔离(Q1)：为什么设 CLAUDE_CONFIG_DIR ──────────────────────────
+# claude 默认会读「全局」~/.claude/ 下的 CLAUDE.md(用户记忆)、settings.json、
+# skills/、plugins/ —— 会和本项目混在一起，污染上下文、带入不想要的规则。
+# 设 CLAUDE_CONFIG_DIR 让 claude 改从这个独立目录读配置 = 每项目一个干净沙箱。
+#   • 凭证不受影响：你的 claude 登录存在 macOS Keychain，MCP/账号在 ~/.claude.json
+#     (HOME 下)，都不在这个目录里 → 换目录不会掉登录。
+#   • 隔离了什么：settings/skills/plugins 走沙箱(不再加载全局的)；但 ⚠️ 全局
+#     ~/.claude/CLAUDE.md 仍会被读(claude 按 HOME 找它，不受 CLAUDE_CONFIG_DIR 影响)。
+#   • 不做隔离(注释掉这个 env)会怎样：claude 照常读全局 ~/.claude/* —— 上下文混入
+#     全局 CLAUDE.md、settings 和 skills，本项目与全局环境不分离。
+[projects.agent.options.env]
+CLAUDE_CONFIG_DIR = "{你期望的工作目录}"
+
+# --- 平台: 个人微信(ilink 网关) ---
+# token 由 `./cc-connect weixin setup --project weixin-claude` 扫码后自动回填到下面。
+
+[[projects.platforms]]
+type = "weixin"
+
+[projects.platforms.options]
+# token = "扫码后自动回填"
+# base_url = "https://ilinkai.weixin.qq.com"   # 默认即此值，一般不用改
+# account_id = "隔离本地状态目录" # 值 = ilink bot 的 ilink_bot_id。正常不用手动改。
+# allow_from = "*"   # 建议扫码后改成你自己的 @im.wechat 用户 ID，限制谁能用
