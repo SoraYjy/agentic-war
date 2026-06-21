@@ -6,12 +6,14 @@ language = "zh"
 [log]
 level = "info"   # 调试时可改 "debug" 看长轮询细节
 
-# 显示设置：是否把模型的"思考过程"作为 💭 预览发到微信。
+# 显示设置：是否把模型"思考过程"作为 💭 预览发到微信。
 # thinking_messages = true(默认) → 显示思考预览(能看到模型推理，但会多一条 💭 消息)
 # thinking_messages = false      → 只发正式答复，不发思考预览(想要干净回复就关掉)
-# 另可设 mode = "quiet" 同时静音思考 + 工具噪声。改完重启 cc-connect 生效。
+# mode（显示模式，取值 full/compact/quiet；注意这是 [display] 的键，和 agent 权限 mode 是两个不同的键）：
+#   mode = "quiet" → 连工具噪声一起静音。改完重启 cc-connect 生效。
 [display]
 thinking_messages = true   # 显式开启；不想要思考模式改成 false
+# mode = "full"            # 显示模式 full/compact/quiet；和 [projects.agent.options] 权限 mode 是两个键
 
 # -----------------------------------------------------------------------------
 # 项目：把一个代码目录绑定到一个 agent + 一组平台
@@ -28,7 +30,7 @@ type = "claudecode"
 [projects.agent.options]
 # claude 的工作目录：决定 claude 在哪个项目里读写代码、跑命令。
 # 改成你实际要让它操作的项目；聊天里也能用 /dir 临时切换。
-work_dir = "/Users/sora/WorkSpace/Agents/pa"
+work_dir = "{你期望的工作目录}"
 # 权限模式(Q3)：= "auto" → claude 自动判断、基本不再弹权限确认，只靠 settings.json 中的 deny 黑名单拦最危险的。
 # 想更保守可改 "acceptEdits"(仅编辑自动通过) 或 "default"(每次都问)。
 mode = "auto"
@@ -41,10 +43,11 @@ mode = "auto"
 #     (HOME 下)，都不在这个目录里 → 换目录不会掉登录。
 #   • 隔离了什么：settings/skills/plugins 走沙箱(不再加载全局的)；但 ⚠️ 全局
 #     ~/.claude/CLAUDE.md 仍会被读(claude 按 HOME 找它，不受 CLAUDE_CONFIG_DIR 影响)。
+#   • 如果想复用全局的基础配置、鉴权、模型、权限规则，那么需要将该目录下的 settings.json 软链到全局的 settings.json。
 #   • 不做隔离(注释掉这个 env)会怎样：claude 照常读全局 ~/.claude/* —— 上下文混入
 #     全局 CLAUDE.md、settings 和 skills，本项目与全局环境不分离。
 [projects.agent.options.env]
-CLAUDE_CONFIG_DIR = "{你期望的工作目录}"
+CLAUDE_CONFIG_DIR = "{独立配置的目录}"
 
 # --- 平台: 个人微信(ilink 网关) ---
 # token 由 `./cc-connect weixin setup --project weixin-claude` 扫码后自动回填到下面。
